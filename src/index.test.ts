@@ -23,7 +23,7 @@ describe('test betwin with correct type', () => {
 	})
 
 	it('test negative digit', () => {
-		expect(betwin(-1, -2)).toBe(undefined)
+		expect(betwin(-1, -2)).toBe(1)
 	})
 
 	it('test 1+ digit', () => {
