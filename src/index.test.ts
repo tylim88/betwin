@@ -57,6 +57,10 @@ describe('test betwin with correct type', () => {
 	it('test 1+ charaters', () => {
 		expect(betwin('PP', 'VV')).toBe(undefined)
 	})
+
+	it('test string and negative string number', () => {
+		expect(betwin('abc', '-7')).toBe(undefined)
+	})
 })
 
 describe('test betwin with incorrect type(for js use case)', () => {
@@ -65,7 +69,7 @@ describe('test betwin with incorrect type(for js use case)', () => {
 		expect(betwin('1', 1)).toBe(undefined)
 	})
 
-	it('test string digit and number', () => {
+	it('test string digit and negative number', () => {
 		//@ts-expect-error
 		expect(betwin('1', -999)).toBe(undefined)
 	})
@@ -75,7 +79,7 @@ describe('test betwin with incorrect type(for js use case)', () => {
 		expect(betwin('abc', 6)).toBe(undefined)
 	})
 
-	it('test string and number', () => {
+	it('test string and negative number', () => {
 		//@ts-expect-error
 		expect(betwin('abc', -7)).toBe(undefined)
 	})
