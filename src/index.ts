@@ -57,7 +57,7 @@ type UpperCaseChar =
 	| 'Y'
 	| 'Z'
 
-type mustSame = 'first and last must be the same type'
+type MustSame = 'all argument must be the same type'
 
 type IsSameType<
 	T extends string | number,
@@ -65,27 +65,27 @@ type IsSameType<
 > = T extends LowerCaseChar
 	? U extends LowerCaseChar
 		? LowerCaseChar
-		: mustSame
+		: MustSame
 	: T extends Digit
 	? U extends Digit
 		? Digit
-		: mustSame
+		: MustSame
 	: T extends StringDigit
 	? U extends StringDigit
 		? StringDigit
-		: mustSame
+		: MustSame
 	: T extends UpperCaseChar
 	? U extends UpperCaseChar
 		? UpperCaseChar
-		: mustSame
+		: MustSame
 	: T extends string
 	? U extends string
 		? string
-		: mustSame
+		: MustSame
 	: T extends number
 	? U extends number
 		? number
-		: mustSame
+		: MustSame
 	: 'this error is impossible, please open issue on github'
 
 const isDigit = (value: number | string) => {
@@ -95,28 +95,22 @@ const isDigit = (value: number | string) => {
 
 const betwin = <T extends string | number, U extends string | number>(
 	first: T,
-	last: U extends StringDigit | Digit | LowerCaseChar | UpperCaseChar
-		? IsSameType<T, U>
-		: U extends string
-		? IsSameType<T, U>
-		: U extends number
-		? IsSameType<T, U>
-		: U
-): IsSameType<T, U> extends mustSame
+	last: IsSameType<T, U> extends MustSame ? MustSame : U
+): IsSameType<T, U> extends MustSame
 	? undefined
 	: T extends StringDigit | Digit | LowerCaseChar | UpperCaseChar
 	? IsSameType<T, U>[]
 	: undefined => {
 	let arr: (StringDigit | Digit | LowerCaseChar | UpperCaseChar)[] = []
 	if (typeof first !== typeof last) {
-		return undefined as IsSameType<T, U> extends mustSame
+		return undefined as IsSameType<T, U> extends MustSame
 			? undefined
 			: T extends StringDigit | Digit | LowerCaseChar | UpperCaseChar
 			? IsSameType<T, U>[]
 			: undefined
 	} else if (typeof first === 'number' && typeof last === 'number') {
 		if (!isDigit(first) || !isDigit(last))
-			return undefined as IsSameType<T, U> extends mustSame
+			return undefined as IsSameType<T, U> extends MustSame
 				? undefined
 				: T extends StringDigit | Digit | LowerCaseChar | UpperCaseChar
 				? IsSameType<T, U>[]
@@ -126,7 +120,7 @@ const betwin = <T extends string | number, U extends string | number>(
 		if (isDigit(first) && isDigit(last)) {
 			arr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 		} else if (first.length > 1 || last.length > 1) {
-			return undefined as IsSameType<T, U> extends mustSame
+			return undefined as IsSameType<T, U> extends MustSame
 				? undefined
 				: T extends StringDigit | Digit | LowerCaseChar | UpperCaseChar
 				? IsSameType<T, U>[]
@@ -190,7 +184,7 @@ const betwin = <T extends string | number, U extends string | number>(
 				'z',
 			]
 		} else {
-			return undefined as IsSameType<T, U> extends mustSame
+			return undefined as IsSameType<T, U> extends MustSame
 				? undefined
 				: T extends StringDigit | Digit | LowerCaseChar | UpperCaseChar
 				? IsSameType<T, U>[]
@@ -201,7 +195,7 @@ const betwin = <T extends string | number, U extends string | number>(
 	if ((first as T) > (last as unknown as T)) {
 		return arr.reverse().filter(v => {
 			return v < first && v > last
-		}) as IsSameType<T, U> extends mustSame
+		}) as IsSameType<T, U> extends MustSame
 			? undefined
 			: T extends StringDigit | Digit | LowerCaseChar | UpperCaseChar
 			? IsSameType<T, U>[]
@@ -209,7 +203,7 @@ const betwin = <T extends string | number, U extends string | number>(
 	} else {
 		return arr.filter(v => {
 			return v > first && v < last
-		}) as IsSameType<T, U> extends mustSame
+		}) as IsSameType<T, U> extends MustSame
 			? undefined
 			: T extends StringDigit | Digit | LowerCaseChar | UpperCaseChar
 			? IsSameType<T, U>[]
