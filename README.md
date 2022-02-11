@@ -16,7 +16,9 @@ best use with typescript but still safe for javascript user.
 
 if first value is bigger than last value, return elements in descending order.
 
-deep typed and tested(both type and run time)
+both type and run time are tested
+
+deeply typed
 
 ```ts
 import betwin from 'betwin'
@@ -30,19 +32,21 @@ betwin('0', '9') // ['1', '2', '3', '4', '5', '6', '7', '8'] : StringDigit[]
 betwin('6', '3') // ['5', '4'] : StringDigit[]
 
 // lower case
-betwin('b', 'E') // ['q', 'r', 's', 't', 'u'] : LowerCaseChar[]
+betwin('p', 'v') // ['q', 'r', 's', 't', 'u'] : LowerCaseChar[]
 betwin('e', 'a') // ['d', 'c', 'b'] : LowerCaseChar[]
 
 // upper case
-betwin('b', 'E') // ['Q', 'R', 'S', 'T', 'U'] : UpperCaseChar[]
+betwin('P', 'V') // ['Q', 'R', 'S', 'T', 'U'] : UpperCaseChar[]
 betwin('E', 'A') // ['D', 'C', 'B'] : UpperCaseChar[]
 
+// same data type but out of bound
 // return undefined
 betwin(11, 22) // undefined : undefined
 betwin('11', '22') // undefined : undefined
 betwin('PP', 'VV') // undefined : undefined
 betwin(-4.1, 7.2) // undefined : undefined
 
+// different data type
 // type error: Argument of type '*' is not assignable to parameter of type '"first and last must be the same type"'.
 // return undefined
 betwin('1', 1) // undefined : undefined
