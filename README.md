@@ -40,7 +40,7 @@ betwin('P', 'V') // ['Q', 'R', 'S', 'T', 'U'] : UpperCaseChar[]
 betwin('E', 'A') // ['D', 'C', 'B'] : UpperCaseChar[]
 
 // same data type but out of bound
-// return undefined
+// return <type>[] | undefined
 betwin(11, 22) // undefined : number[] | undefined
 betwin('11', '22') // undefined : string[] | undefined
 betwin('PP', 'VV') // undefined : string[] | undefined
@@ -56,7 +56,9 @@ betwin('abc', -7) // undefined : undefined
 
 see [test](https://github.com/tylim88/betwin/blob/main/src/index.test.ts) for more examples
 
-you can also import some predefined types:
+most likely you wont need this because same type returns `<type>[] | undefined`
+
+but if you do need finer control on type, you can also import some predefined types:
 
 ```ts
 import { UpperCaseChar, LowerCaseChar, Digit, StringDigit } from 'betwin'
@@ -66,6 +68,7 @@ where
 
 ```ts
 type StringDigit = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'
+
 type Digit = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 
 type LowerCaseChar =
