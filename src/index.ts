@@ -131,35 +131,6 @@ const betwin = <T extends string | number, U extends string | number>(
 				: T extends StringDigit | Digit | LowerCaseChar | UpperCaseChar
 				? IsSameType<T, U>[]
 				: undefined
-		} else if (first === first.toLowerCase() && last === last.toLowerCase()) {
-			arr = [
-				'a',
-				'b',
-				'c',
-				'd',
-				'e',
-				'f',
-				'g',
-				'h',
-				'i',
-				'j',
-				'k',
-				'l',
-				'm',
-				'n',
-				'o',
-				'p',
-				'q',
-				'r',
-				's',
-				't',
-				'u',
-				'v',
-				'w',
-				'x',
-				'y',
-				'z',
-			]
 		} else if (first === first.toUpperCase() && last === last.toUpperCase()) {
 			arr = [
 				'A',
@@ -188,6 +159,35 @@ const betwin = <T extends string | number, U extends string | number>(
 				'X',
 				'Y',
 				'Z',
+			]
+		} else if (first === first.toLowerCase() && last === last.toLowerCase()) {
+			arr = [
+				'a',
+				'b',
+				'c',
+				'd',
+				'e',
+				'f',
+				'g',
+				'h',
+				'i',
+				'j',
+				'k',
+				'l',
+				'm',
+				'n',
+				'o',
+				'p',
+				'q',
+				'r',
+				's',
+				't',
+				'u',
+				'v',
+				'w',
+				'x',
+				'y',
+				'z',
 			]
 		} else {
 			return undefined as IsSameType<T, U> extends mustSame
