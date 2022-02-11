@@ -50,4 +50,4 @@ betwin('b', 'E') // undefined : undefined
 betwin('abc', -7) // undefined : undefined
 ```
 
-see test for more use cases
+see [test](https://github.com/tylim88/betwin/blob/main/src/index.test.ts) for more examples

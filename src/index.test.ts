@@ -7,10 +7,6 @@ describe('test betwin with correct type', () => {
 		expect(betwin(6, 3)).toEqual([5, 4])
 	})
 
-	it('test negative digit', () => {
-		expect(betwin(-1, -2)).toBe(undefined)
-	})
-
 	it('test string digit', () => {
 		expect(betwin('0', '9')).toEqual(['1', '2', '3', '4', '5', '6', '7', '8'])
 		expect(betwin('6', '3')).toEqual(['5', '4'])
@@ -24,6 +20,10 @@ describe('test betwin with correct type', () => {
 	it('test upper case char', () => {
 		expect(betwin('P', 'V')).toEqual(['Q', 'R', 'S', 'T', 'U'])
 		expect(betwin('E', 'A')).toEqual(['D', 'C', 'B'])
+	})
+
+	it('test negative digit', () => {
+		expect(betwin(-1, -2)).toBe(undefined)
 	})
 
 	it('test 1+ digit', () => {
