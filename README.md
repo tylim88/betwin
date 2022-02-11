@@ -46,7 +46,7 @@ betwin('11', '22') // undefined : undefined
 betwin('PP', 'VV') // undefined : undefined
 betwin(-4.1, 7.2) // undefined : undefined
 
-// different data type
+// different data types
 // type error: Argument of type '*' is not assignable to parameter of type '"first and last must be the same type"'.
 // return undefined
 betwin('1', 1) // undefined : undefined
