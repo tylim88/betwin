@@ -1,6 +1,6 @@
 {
 	"name": "betwin",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "🤞 Get middle values between 2 single digits or single alphabets",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
@@ -10,7 +10,7 @@
 		"tsc": "tsc",
 		"prettier": "npx pretty-quick --staged",
 		"build": "rm -rf dist && babel src --out-dir dist --extensions \".ts\"",
-		"test": "jest",
+		"test": "rm -rf coverage && jest",
 		"dev": "cross-env NODE_ENV=dev ts-node src/index.ts",
 		"pub": "cross-env NODE_ENV=prod npm run build && npm run tsc && npm publish",
 		"pre-commit": "npm run tsc && npm run lint --fix && npm run prettier"
