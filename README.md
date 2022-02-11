@@ -56,6 +56,8 @@ betwin('abc', -7) // undefined : undefined
 
 see [test](https://github.com/tylim88/betwin/blob/main/src/index.test.ts) for more examples
 
+## 🔨 Utility
+
 most likely you wont need this because same type returns `<type>[] | undefined`
 
 but if you do need finer control on type, you can also import some predefined types:
