@@ -16,7 +16,7 @@ best use with typescript but still safe for javascript user.
 
 if first value is bigger than last value, return elements in descending order.
 
-properly typed and tested
+deep typed and tested(both type and run time)
 
 ```ts
 import betwin from 'betwin'
