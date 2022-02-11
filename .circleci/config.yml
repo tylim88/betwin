@@ -3,8 +3,9 @@
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
 version: 2.1
+# https://circleci.com/developer/orbs/orb/coveralls/coveralls
 orbs:
-  codecov: codecov/codecov@3.2.2
+  coveralls: coveralls/coveralls@1.0.6
 jobs:
   build:
     docker:
@@ -38,11 +39,13 @@ jobs:
 
       - run: npm run build
 
-      # https://medium.com/pixelmatters/part-2-how-to-integrate-circleci-codecov-into-your-project-step-by-step-8bb6a7d3a5c9
-      - codecov/upload:
-          file: './coverage/clover.xml'
-          token: CODECOV_TOKEN # env var issue https://discuss.circleci.com/t/env-type-in-orbs/27424
+      - coveralls/upload
+
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+# https://dev.to/dxnchima/integrating-circleci-with-coveralls-for-your-next-node-project-hi1
+notify:
+  webhooks:
+    - url: https://coveralls.io/webhook?repo_token=${process.env.COVERALLS_REPO_TOKEN}
