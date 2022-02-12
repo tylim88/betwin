@@ -12,8 +12,6 @@ npm i betwin
 
 ## 🎵 Usage
 
-best use with typescript but still safe for javascript user.
-
 if first value is bigger than last value, return elements in descending order.
 
 both type and run time are tested
