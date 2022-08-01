@@ -23,5 +23,6 @@ module.exports = {
 		'@typescript-eslint/no-explicit-any': 'error',
 		camelcase: 'off',
 		'@typescript-eslint/ban-ts-comment': 'off',
+		'@typescript-eslint/no-inferrable-types': 'off',
 	},
 }

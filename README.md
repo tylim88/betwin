@@ -18,47 +18,54 @@ both type and run time are tested
 
 deeply typed
 
+The return type is not perfect, I will improve it again when I have more time.
+
 ```ts
 import betwin from 'betwin'
 
 // digit
-betwin(0, 9) // [1, 2, 3, 4, 5, 6, 7, 8] : Digit[]
-betwin(6, 3) // [5, 4] : Digit[]
+betwin(0, 9) // [1, 2, 3, 4, 5, 6, 7, 8], type: Exclude<Digit, 0 | 9>[]
+betwin(6, 3) // [5, 4], type: Exclude<Digit, 5 | 4>[]
 
 // string digit
-betwin('0', '9') // ['1', '2', '3', '4', '5', '6', '7', '8'] : StringDigit[]
-betwin('6', '3') // ['5', '4'] : StringDigit[]
+betwin('0', '9') // ['1', '2', '3', '4', '5', '6', '7', '8'], type: Exclude<StringDigit, '0' | '9'>[]
+betwin('6', '3') // ['5', '4'], type: Exclude<StringDigit, '6' | '3'>[]
 
 // lower case
-betwin('p', 'v') // ['q', 'r', 's', 't', 'u'] : LowerCaseChar[]
-betwin('e', 'a') // ['d', 'c', 'b'] : LowerCaseChar[]
+betwin('p', 'v') // ['q', 'r', 's', 't', 'u'], type: Exclude<LowerCaseChar, 'p' | 'w' >[]
+betwin('e', 'a') // ['d', 'c', 'b'], type: Exclude<LowerCaseChar, 'e' | 'a' >[]
 
 // upper case
-betwin('P', 'V') // ['Q', 'R', 'S', 'T', 'U'] : UpperCaseChar[]
-betwin('E', 'A') // ['D', 'C', 'B'] : UpperCaseChar[]
+betwin('P', 'V') // ['Q', 'R', 'S', 'T', 'U'], type: Exclude<UpperCaseChar, 'P' | 'V'>[]
+betwin('E', 'A') // ['D', 'C', 'B'], type: Exclude<UpperCaseChar, 'E' | 'A'>[]
 
-// same data type but out of bound
-// return <type>[] | undefined
-betwin(11, 22) // undefined : number[] | undefined
-betwin('11', '22') // undefined : string[] | undefined
-betwin('PP', 'VV') // undefined : string[] | undefined
-betwin(-4.1, 7.2) // undefined : number[] | undefined
+// accept supertype
+betwin(8 as number, 4) // [7, 6, 5, 4], type: Exclude<Digit, 8 | 4>[]
+betwin('T', 'U' as string) // ['v'], type: Exclude<UpperCaseChar, 'T' | 'U' >[]
+betwin('t' as string, 'u' as string) // ['v'], type: Exclude<LowerCaseChar, 't' | 'u' >[]
 
-// different data types
-// type error: Argument of type '*' is not assignable to parameter of type '"first and last must be the same type"'.
-// return undefined
-betwin('1', 1) // undefined : undefined
-betwin('b', 'E') // undefined : undefined
-betwin('abc', -7) // undefined : undefined
+// same arguments trigger type error
+betwin(5, 5) // [], type: Exclude<Digit, 5>[]
+
+// out of bound data trigger type error and return undefined
+betwin(11, 22) // undefined, type: number[] | undefined
+betwin('11', '22') // undefined, type: string[] | undefined
+betwin('PP', 'VV') // undefined, type: string[] | undefined
+betwin(-4.1, 7.2) // undefined, type : number[] | undefined
+
+// different data types trigger type error and return undefined
+betwin('1', 1) // undefined, type: undefined
+betwin('b', 'E') // undefined, type: undefined
+betwin('abc' as string, -7) // undefined, type: undefined
+betwin(99.9 as number, 'xy' as string) // undefined, type: undefined
+betwin(0.45, 'U' as string) // undefined, type: undefined
 ```
 
 see [test](https://github.com/tylim88/betwin/blob/main/src/index.test.ts) for more examples
 
 ## 🔨 Utility
 
-most likely you wont need this because same type returns `<type>[] | undefined`
-
-but if you do need finer control on type, you can also import some predefined types:
+in case you need some predefined types:
 
 ```ts
 import { UpperCaseChar, LowerCaseChar, Digit, StringDigit } from 'betwin'
