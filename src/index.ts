@@ -62,7 +62,7 @@ const betwin = <
 	? number[] | undefined
 	: string extends U
 	? string[] | undefined
-	: Exclude<FindWideType<U>, T | U> => {
+	: Exclude<FindWideType<U>, T | U>[] => {
 	let arr: (StringDigit | Digit | LowerCaseChar | UpperCaseChar)[] = []
 	if (typeof first !== typeof last) {
 		// @ts-expect-error
