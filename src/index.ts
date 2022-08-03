@@ -6,7 +6,6 @@ import {
 	FindWideType,
 	ErrorTypeMismatched,
 	ErrorInvalidType,
-	IsEqual,
 } from './types'
 
 const isDigit = (value: number | string) => {
