@@ -1,7 +1,7 @@
 {
 	"name": "betwin",
-	"version": "2.1.0",
-	"description": "🤞 Get middle values between 2 single digits or single alphabets",
+	"version": "2.1.1",
+	"description": "🤞 Get values in between 2 single digits or single alphabets",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
 	"scripts": {
