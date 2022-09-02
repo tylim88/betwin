@@ -2,7 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/betwin)](https://www.npmjs.com/package/betwin) [![GitHub](https://img.shields.io/github/license/tylim88/betwin?color=blue)](https://github.com/tylim88/betwin/blob/master/LICENSE) [![dependencies](https://img.shields.io/badge/dynamic/json?color=brightgreen&label=dependencies&query=%24.dependencies.count&url=https%3A%2F%2Fapi.npmutil.com%2Fpackage%2Fbetwin)](https://www.npmjs.com/package/betwin?activeTab=dependencies) [![circleci](https://circleci.com/gh/tylim88/betwin.svg?style=shield)](https://app.circleci.com/pipelines/github/tylim88/betwin) [![Coverage Status](https://coveralls.io/repos/github/tylim88/betwin/badge.svg?branch=main)](https://coveralls.io/github/tylim88/betwin?branch=main)
 
-🤞 Get values in between 2 single digits or single alphabets
+🤞 Get values in between 2 single digits or alphabets
 
 ## Installation
 
