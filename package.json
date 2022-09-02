@@ -1,6 +1,6 @@
 {
 	"name": "betwin",
-	"version": "2.1.1",
+	"version": "2.1.2",
 	"description": "🤞 Get values in between 2 single digits or single alphabets",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
